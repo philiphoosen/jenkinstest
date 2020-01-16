@@ -9,7 +9,7 @@ pipeline {
                   println commit_hash
 
                   sh(script: "git diff-tree --no-commit-id --name-only -r ${commit_hash} > changed_projects.txt")
-                  sh(script: "sed -i 's|^(.+)/.+|\\1|p' changed_projects.txt")
+                  // sh(script: "sed -i 's|^(.+)/.+|\\1|p' changed_projects.txt")
                   // def sed_command =  "sed -En 's|^(.+)/.+|\\1|p'"
                   // def sed_command =  "sed -En 's|^(.+)/.+|\\1|p'"
                   // println sed_command

@@ -15,7 +15,7 @@ pipeline {
 
                   for(project in projects){
                       println project
-                      build job: "${project}/master", wait: false
+                      build job: "${project}/${$BRANCH_NAME}", wait: false
                   }
                 }
             }

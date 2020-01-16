@@ -12,9 +12,10 @@ pipeline {
                   
                   println changed_projects
                   def projects = changed_projects.split("\n");
-                  println projects
-                  // writeFile file: "./changed_projects.txt", text: "${changed_projects}"
 
+                  for(project in projects){
+                      println project
+                  }
                 }
             }
         }

@@ -9,7 +9,7 @@ pipeline {
                   println commit_hash
 
                   def changed_files = sh(
-                    script: 'git diff-tree --no-commit-id --name-only -r ${commit_hash}', 
+                    script: "git diff-tree --no-commit-id --name-only -r ${commit_hash}", 
                     returnStdout: true
                   )
 

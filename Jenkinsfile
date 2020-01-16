@@ -12,14 +12,13 @@ pipeline {
                   def changed_projects = sh(
                     script: "git diff-tree --no-commit-id --name-only -r \$(git log --format='%H' -n 1) | sed -En 's|^(.+)/.+|\\1|p' | uniq", 
                     returnStdout: true
-                  )
+                  ).split("\n")
                   
-                  println changed_projects
-                  def projects = changed_projects.split("\n");
-
-                  for(project in projects){
+                  for(project in changed_projects){
                       println project
-                      build job: "${project}/${BRANCH_NAME}", wait: false
+                      if project != "" {
+                        build job: "${project}/${BRANCH_NAME}", wait: false
+                      }
                   }
                 }
             }

@@ -16,7 +16,7 @@ pipeline {
                   
                   for(project in changed_projects){
                       println project
-                      if project != "" {
+                      if(project != ""){
                         build job: "${project}/${BRANCH_NAME}", wait: false
                       }
                   }

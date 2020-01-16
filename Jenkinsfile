@@ -5,11 +5,18 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                  def commit_hash = sh(script: 'git log --format="%H" -n 1', returnStdout: true)
-                  println commit_hash
+                  // def commit_hash = sh(script: 'git log --format="%H" -n 1', returnStdout: true)
+                  // println commit_hash
+
+                  // def changed_projects = sh(
+                    // script: "git diff-tree --no-commit-id --name-only -r ${commit_hash} | sed -En 's|^(.+)/.+|\1|p' | uniq", 
+                  //   returnStdout: true
+                  // )
+
+                  // println changed_projects
 
                   def changed_projects = sh(
-                    script: "git diff-tree --no-commit-id --name-only -r ${commit_hash} | sed -En 's|^(.+)/.+|\1|p' | uniq", 
+                    script: "./get_changed_projects.sh", 
                     returnStdout: true
                   )
 

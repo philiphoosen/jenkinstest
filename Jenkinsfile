@@ -13,9 +13,9 @@ pipeline {
                   // def sed_command =  "sed -En 's|^(.+)/.+|\\1|p'"
                   // def sed_command =  "sed -En 's|^(.+)/.+|\\1|p'"
                   // println sed_command
-                  def command = "/bin/bash -c 'git diff-tree --no-commit-id --name-only -r ${commit_hash} | sed -En \'s|^\\(.+\\)/.+|\\1|p\' | uniq'"
+                  def command = "/bin/bash -c 'git diff-tree --no-commit-id --name-only -r ${commit_hash} | sed -En \\'s|^\\(.+\\)/.+|\\1|p\\' | uniq'"
                   println command
-                  
+
                   def changed_projects = sh(
                     script: "${command}", 
                     returnStdout: true
